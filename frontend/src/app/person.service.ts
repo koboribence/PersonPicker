@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Person } from './person-manager/person-manager.component';
+import { Draw, Person } from './person-manager/person-manager.component';
 
 @Injectable({
   providedIn: 'root'
@@ -28,4 +28,7 @@ export class PersonService {
   drawRandom(): Observable<Person> {
     return this.http.get<Person>(`${this.baseUrl}/random`);
   }
+  getDraws(): Observable<Draw[]> {
+  return this.http.get<Draw[]>("https://localhost:7259/api/draws");
+}
 }

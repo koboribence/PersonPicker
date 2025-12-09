@@ -1,1 +1,59 @@
-<p>person-manager works!</p>
+<div class="person-manager">
+
+  <h1>PersonPicker</h1>
+
+  <div class="add-form">
+    <input
+      type="text"
+      placeholder="Új név..."
+      [(ngModel)]="newName"
+    />
+    <button (click)="addPerson()">Hozzáadás</button>
+  </div>
+
+  <div *ngIf="isLoading" class="loading">
+    Sorsolás folyamatban...
+  </div>
+
+  <div *ngIf="selectedPerson" class="result">
+    <strong>Kisorsolt név:</strong> {{ selectedPerson.name }}
+  </div>
+
+  <div *ngIf="errorMessage" class="error">
+    {{ errorMessage }}
+  </div>
+
+  <h2>Nevek</h2>
+  <ul>
+    <li *ngFor="let p of persons">
+      {{ p.name }}
+      <button (click)="deletePerson(p)">Törlés</button>
+    </li>
+  </ul>
+
+  <div class="actions">
+    <button (click)="drawRandom()">Sorsolás</button>
+  </div>
+
+  <h2>Sorsolások története</h2>
+
+  <div *ngIf="draws.length === 0" class="empty">
+    Még nem történt sorsolás.
+  </div>
+
+  <table *ngIf="draws.length > 0" class="draw-table">
+    <thead>
+      <tr>
+        <th>Időpont</th>
+        <th>Győztes név</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of draws">
+        <td>{{ d.selectedAt | date:'yyyy.MM.dd HH:mm:ss' }}</td>
+        <td>{{ d.personName }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+</div>

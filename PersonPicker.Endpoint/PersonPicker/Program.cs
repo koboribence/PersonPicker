@@ -30,7 +30,7 @@ namespace PersonPicker
             var app = builder.Build();
 
             app.UseHttpsRedirection();
-
+            app.UseCors(corsPolicyName);
             app.UseAuthorization();
 
             app.MapControllers();
