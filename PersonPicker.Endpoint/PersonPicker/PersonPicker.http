@@ -1,0 +1,6 @@
+@PersonPicker_HostAddress = http://localhost:5037
+
+GET {{PersonPicker_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
