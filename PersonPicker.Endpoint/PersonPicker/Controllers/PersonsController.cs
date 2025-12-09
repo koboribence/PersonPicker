@@ -35,7 +35,7 @@ namespace PersonPicker.Endpoint.Controllers
             var count = await _context.Persons.CountAsync();
             if (count == 0)
             {
-                return NotFound("Nincs név az adatbázisban.");
+                return NotFound("Nincs név az adatbázisban!");
             }
 
             var index = _random.Next(0, count);
@@ -45,10 +45,14 @@ namespace PersonPicker.Endpoint.Controllers
                 .Skip(index)
                 .FirstOrDefaultAsync();
 
-            if (person == null)
+            var draw = new Draw
             {
-                return NotFound("Nem sikerült nevet sorsolni.");
-            }
+                PersonId = person.Id,
+                SelectedAt = DateTime.UtcNow
+            };
+
+            _context.Draws.Add(draw);
+            await _context.SaveChangesAsync();
 
             return Ok(person);
         }
