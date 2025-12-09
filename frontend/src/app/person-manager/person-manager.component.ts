@@ -9,3 +9,7 @@ import { Component } from '@angular/core';
 export class PersonManagerComponent {
 
 }
+export interface Person {
+  id: string;
+  name: string;
+}
