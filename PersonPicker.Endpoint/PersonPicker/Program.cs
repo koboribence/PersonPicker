@@ -1,3 +1,6 @@
+using Microsoft.EntityFrameworkCore;
+using PersonPicker.Data;
+
 namespace PersonPicker
 {
     public class Program
@@ -9,6 +12,9 @@ namespace PersonPicker
             // Add services to the container.
 
             builder.Services.AddControllers();
+
+            builder.Services.AddDbContext<AppDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var app = builder.Build();
 
