@@ -15,13 +15,13 @@ namespace PersonPicker
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var corsPolicyName = "AllowFrontend";
-
+            var frontendUrl = builder.Configuration.GetValue<string>("settings:frontend");
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy(corsPolicyName, policy =>
                 {
                     policy
-                        .WithOrigins("http://localhost:4200")
+                        .WithOrigins(frontendUrl)
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
