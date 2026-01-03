@@ -12,26 +12,31 @@ namespace PersonPicker
             builder.Services.AddControllers();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+            options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
             var corsPolicyName = "AllowFrontend";
-            var frontendUrl = builder.Configuration.GetValue<string>("settings:frontend");
             builder.Services.AddCors(options =>
             {
                 options.AddPolicy(corsPolicyName, policy =>
                 {
                     policy
-                        .WithOrigins(frontendUrl)
+                        .WithOrigins(builder.Configuration["settings:frontend"] ?? "http://localhost:4200")
                         .AllowAnyHeader()
                         .AllowAnyMethod();
                 });
             });
-
+            if (builder.Environment.IsProduction())
+            {
+                builder.WebHost.ConfigureKestrel(options =>
+                {
+                    options.ListenAnyIP(
+                        int.Parse(builder.Configuration["settings:port"] ?? "6500")
+                    );
+                });
+            }
             var app = builder.Build();
 
-            app.UseHttpsRedirection();
             app.UseCors(corsPolicyName);
-            app.UseAuthorization();
 
             app.MapControllers();
 
