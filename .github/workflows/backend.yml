@@ -2,7 +2,7 @@ name: Deploy Backend to Prod
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "main" ]
 
 jobs:
   build-and-deploy:
