@@ -21,7 +21,7 @@ jobs:
       REMOTE_CURRENT: /var/backend/current        # symlink az aktuális release-re
       SERVICE_NAME: personpickerbackend
       FRONTEND_URL: https://personpicker.eu
-      SSH_HOST: personpicker.hu
+      SSH_HOST: personpicker.eu
       SSH_USER: root
       # --- SECRET-ek (Repo Settings → Secrets and variables → Actions) ---
       # SSH_KEY, SSH_PASS, DB_CONN
