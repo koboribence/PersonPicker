@@ -10,7 +10,7 @@ jobs:
 
     env:
       # --- ÁLLÍTHATÓ ---
-      PROJECT_PATH: PersonPicker.Endpoint/PersonPicker.csproj
+      PROJECT_PATH: PersonPicker.Endpoint/PersonPicker/PersonPicker.csproj
       PUBLISH_DIR: publish
       RUNTIME: linux-x64
       SELF_CONTAINED: "true"
