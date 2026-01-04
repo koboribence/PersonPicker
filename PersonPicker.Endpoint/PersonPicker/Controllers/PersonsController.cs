@@ -41,9 +41,14 @@ namespace PersonPicker.Endpoint.Controllers
             var index = _random.Next(0, count);
 
             var person = await _context.Persons
-                .OrderBy(p => p.Id)
-                .Skip(index)
-                .FirstOrDefaultAsync();
+      .OrderBy(p => p.Id)
+      .Skip(index)
+      .FirstOrDefaultAsync();
+
+            if (person == null)
+            {
+                return NotFound("Nincs elérhető személy a véletlenszerű húzáshoz.");
+            }
 
             var draw = new Draw
             {
