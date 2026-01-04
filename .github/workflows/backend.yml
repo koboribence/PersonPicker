@@ -68,6 +68,7 @@ jobs:
         with:
           host: ${{ env.SSH_HOST }}
           username: ${{ env.SSH_USER }}
+          password: ${{ secrets.SSH_PASSWORD }}
           source: "app-${{ github.sha }}.tar.gz"
           target: "/tmp/"
 
