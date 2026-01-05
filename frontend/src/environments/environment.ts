@@ -1,3 +1,3 @@
 export const environment = {
-    backendUrl: "http://localhost:7259"
+    backendUrl: "https://api.personpicker.eu"
 };
