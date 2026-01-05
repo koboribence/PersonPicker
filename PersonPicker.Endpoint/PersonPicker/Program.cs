@@ -12,7 +12,7 @@ namespace PersonPicker
             builder.Services.AddControllers();
 
             builder.Services.AddDbContext<AppDbContext>(options =>
-            options.UseSqlServer(builder.Configuration["db:conn"]);
+            options.UseSqlServer(builder.Configuration["db:conn"]));
 
             var corsPolicyName = "AllowFrontend";
             builder.Services.AddCors(options =>
