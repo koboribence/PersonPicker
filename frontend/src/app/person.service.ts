@@ -6,7 +6,7 @@ import { provideHttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Draw, Person } from './person-manager/person-manager.component';
 import { ConfigService } from './config.service';
-import { environment } from '../environments/environment.development';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
