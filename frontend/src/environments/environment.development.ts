@@ -1,3 +1,3 @@
 export const environment = {
-    backendUrl: "https://test.api.personpicker.eu:5000"
+    backendUrl: "https://test.api.personpicker.eu"
 };
