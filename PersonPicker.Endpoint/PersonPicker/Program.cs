@@ -35,7 +35,6 @@ namespace PersonPicker
                 });
             }
             var app = builder.Build();
-
             app.UseCors(corsPolicyName);
 
             app.MapControllers();
