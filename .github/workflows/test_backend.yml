@@ -100,7 +100,7 @@ jobs:
             # appsettings.json módosítása (db:conn + settings:frontend -> secretből)
             if command -v jq >/dev/null; then
               sudo jq \
-                --arg conn "${{ secrets.DB_CONN }}" \
+                --arg conn "${{ secrets.DB_CONN_TEST }}" \
                 --arg frontend "${{ env.FRONTEND_URL }}" \
                 '.db.conn = $conn | .settings.frontend = $frontend' \
                 "$NEW_RELEASE/appsettings.json" | sudo tee "$NEW_RELEASE/appsettings.json.tmp" > /dev/null
