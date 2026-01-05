@@ -9,7 +9,6 @@ namespace PersonPicker.Controllers
     public class DrawsController : ControllerBase
     {
         private readonly AppDbContext _context;
-
         public DrawsController(AppDbContext context)
         {
             _context = context;
